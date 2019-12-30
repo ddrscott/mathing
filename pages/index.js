@@ -26,6 +26,8 @@ function App({query}) {
 
     return (
       <Layout>
+        <a href={`/?seed=${seed - 1}`} className="no-print" style={{float:'left'}} title="Prev">Prev</a>
+        <a  href={`/?seed=${seed + 1}`} className="no-print" style={{float:'right'}} title="Next">Next</a>
         <h1>{title}</h1>
         <div className="columns">
           <ComponentType min={min} max={max} seed={seed} count={count} />
@@ -49,7 +51,15 @@ function App({query}) {
     )
 }
 
-App.getInitialProps = ({query}) => {
+App.getInitialProps = ({res, query}) => {
+  if (!query.seed && res) {
+    console.log(query);
+    let d = new Date();
+    res.writeHead(302, {
+      Location: '/?seed=' + d.getFullYear() + (d.getMonth() + 1) + d.getDate()
+    })
+    res.end()
+  }
   return {query}
 }
 

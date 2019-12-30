@@ -18,6 +18,13 @@ export default ({children}) => (
         font-family: Helvetica, Arial, Sans-Serif;
         font-size: 16px;
       }
+      @media print
+      {    
+          .no-print, .no-print *
+          {
+              display: none !important;
+          }
+      }
     `}</style>
   </div>
 )
