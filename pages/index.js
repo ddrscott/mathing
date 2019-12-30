@@ -9,11 +9,11 @@ const TYPES = {
   addition_bonds: AdditionBonds
 }
 
-export default function App({url: {query}}) {
+function App({query}) {
 
     let {seed, min, max, count, type} = query;
 
-    seed = seed ? parseInt(seed) : 2;
+    seed = seed ? parseInt(seed) : 1;
     min = min ? parseInt(min) : 1;
     max = max ? parseInt(max) : 9;
     count = count ? parseInt(count) : 20;
@@ -48,3 +48,9 @@ export default function App({url: {query}}) {
       </Layout>
     )
 }
+
+App.getInitialProps = ({query}) => {
+  return {query}
+}
+
+export default App;
