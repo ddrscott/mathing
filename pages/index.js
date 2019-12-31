@@ -26,8 +26,8 @@ function App({query}) {
 
     return (
       <Layout>
-        <a href={`/?seed=${seed - 1}`} className="button no-print" style={{float:'left'}} title="Prev">Prev</a>
-        <a  href={`/?seed=${seed + 1}`} className="button no-print" style={{float:'right'}} title="Next">Next</a>
+        <a role="navigation" aria-label="Previous Sheet" href={`/?seed=${seed - 1}`} className="button no-print" style={{float:'left'}} title="Prev">Previous</a>
+        <a role="navigation" aria-label="Next Sheet" href={`/?seed=${seed + 1}`} className="button no-print" style={{float:'right'}} title="Next">Next</a>
         <h1>{title}</h1>
         <div className="columns">
           <ComponentType min={min} max={max} seed={seed} count={count} />
@@ -38,17 +38,30 @@ function App({query}) {
           font-style: sans-serif;
         }
         .columns {
-          margin: 0 0em;
           text-align: center;
           font-family: monospace;
-          font-size: 3vw;
-          height: calc(100% - 1em);
-          columns: auto 4;
+          font-size: 24px;
+          columns: 8em auto;
           line-height: 2.75;
         }
         .button {
           padding: 1em;
         }
+        @media print
+        {    
+          h1 {
+            margin: 0;
+            padding: 0 0 1em;
+          }
+          body {
+          }
+
+          .columns {
+             font-size: 20px;
+             columns: auto 4;
+          }
+        }
+
         `}</style>
       </Layout>
     )

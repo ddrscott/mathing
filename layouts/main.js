@@ -12,12 +12,18 @@ export default ({children}) => (
       html, body {
         padding: 0;
         margin: 0;
+        height: 100%;
       }
       body {
-        height: calc(100vh - 2em);
+        height: 100%;
         font-family: Helvetica, Arial, Sans-Serif;
         font-size: 16px;
       }
+      .factor, .op, .equals {
+          display: inline-block;
+          min-width: 1.5em;
+      }
+
       @media print
       {    
           .no-print, .no-print *

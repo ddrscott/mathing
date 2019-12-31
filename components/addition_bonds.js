@@ -6,9 +6,9 @@ export default class AdditionBonds extends Problems {
     let sum = f[0] + f[1];
     return (
       <ProblemSet key={i}>
-        <Problem> {f[0]} + {f[1]} = </Problem>
-        <Problem> {sum} - {f[1]} = </Problem>
-        <Problem> {sum} - {f[0]} = </Problem>
+      <Problem><span className="factor">{f[0]}</span><span className="op">+</span><span className="factor">{f[1]}</span><span className="equals">=</span></Problem>
+      <Problem><span className="factor">{sum}</span><span className="op">-</span><span className="factor">{f[0]}</span><span className="equals">=</span></Problem>
+      <Problem><span className="factor">{sum}</span><span className="op">-</span><span className="factor">{f[1]}</span><span className="equals">=</span></Problem>
       </ProblemSet>
     )
   }
