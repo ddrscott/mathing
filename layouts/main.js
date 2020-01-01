@@ -18,10 +18,16 @@ export default ({children}) => (
         height: 100%;
         font-family: Helvetica, Arial, Sans-Serif;
         font-size: 16px;
+        background: #EEF2F7;
+        text-align: center;
       }
       .factor, .op, .equals {
           display: inline-block;
-          min-width: 1.5em;
+          min-width: 1.25em;
+      }
+
+      *, *::before, *::after {
+        box-sizing: border-box
       }
 
       @media print
