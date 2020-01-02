@@ -4,5 +4,5 @@ export const ProblemSet = styled.div`
 `;
 
 export const Problem = styled.div`
-  display: flex;
+  display: inline-block;
 `;

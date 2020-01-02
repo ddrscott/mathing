@@ -9,11 +9,14 @@ export default ({children}) => (
     { children }
 
     <style jsx global>{`
+      *, *::before, *::after { box-sizing: border-box }
+
       html, body {
         padding: 0;
         margin: 0;
         height: 100%;
       }
+
       body {
         height: 100%;
         font-family: Helvetica, Arial, Sans-Serif;
@@ -21,13 +24,10 @@ export default ({children}) => (
         background: #EEF2F7;
         text-align: center;
       }
+
       .factor, .op, .equals {
           display: inline-block;
           min-width: 1.25em;
-      }
-
-      *, *::before, *::after {
-        box-sizing: border-box
       }
 
       @media print
