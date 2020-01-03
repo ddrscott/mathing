@@ -9,6 +9,7 @@ export default ({children}) => (
       <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon" />
     </Head>
       <GitHubForkRibbon href="https://github.com/ddrscott/mathing/"
+        className="no-print"
         target="_blank"
         color="black"
         position="right">

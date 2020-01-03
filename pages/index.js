@@ -68,6 +68,7 @@ function App({query}) {
               0 100px 80px rgba(0, 0, 0, 0.12);
 
             margin: 5%;
+            padding-bottom: 3em;
             border-radius: 2px;
           }
         }
