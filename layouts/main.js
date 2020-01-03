@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import GitHubForkRibbon from 'react-github-fork-ribbon'
+
 export default ({children}) => (
   <div>
     <Head>
@@ -6,6 +8,13 @@ export default ({children}) => (
       <meta charSet="utf-8" />
       <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon" />
     </Head>
+      <GitHubForkRibbon href="https://github.com/ddrscott/mathing/"
+        target="_blank"
+        color="black"
+        position="right">
+        Fork me on GitHub
+      </GitHubForkRibbon>
+
     { children }
 
     <style jsx global>{`

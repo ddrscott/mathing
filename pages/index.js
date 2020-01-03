@@ -1,12 +1,16 @@
 import Head from 'next/head';
 import AdditionBonds from '../components/addition_bonds';
+import Addition from '../components/addition';
+import Subtraction from '../components/subtraction';
 import Layout from '../layouts/main';
 import styled from 'styled-components';
 import Link from 'next/link'
 
 
 const TYPES = {
-  addition_bonds: AdditionBonds
+  addition_bonds: AdditionBonds,
+  addition: Addition,
+  subtraction: Subtraction
 }
 
 function App({query}) {
@@ -16,21 +20,23 @@ function App({query}) {
     seed = seed ? parseInt(seed) : 1;
     min = min ? parseInt(min) : 1;
     max = max ? parseInt(max) : 9;
-    count = count ? parseInt(count) : 20;
+    count = count ? parseInt(count) : 60;
     type = type || 'addition_bonds';
 
 
     const ComponentType = TYPES[type],
-          title = type.split('_').map(w => w[0].toUpperCase() + w.substr(1).toLowerCase()).join(' ');
-
+          title = type.split('_').map(w => w[0].toUpperCase() + w.substr(1).toLowerCase()).join(' '),
+          base_query = `/?type=${type}&min=${min}&max=${max}&count=${count}`
 
     return (
       <Layout>
         <div className="page">
-          <a role="navigation" aria-label="Previous Sheet" href={`/?seed=${seed - 10000}`} className="button no-print" style={{float:'left'}} title="Prev">Previous</a>
-          <a role="navigation" aria-label="Next Sheet" href={`/?seed=${seed + 10000}`} className="button no-print" style={{float:'right'}} title="Next">Next</a>
+          <nav className="no-print">
+          <a role="navigation" aria-label="Previous Sheet" href={`${base_query}&seed=${seed - 10000}`} className="button no-print" style={{float:'left'}} title="Prev">Previous</a>
+          <a role="navigation" aria-label="Next Sheet" href={`${base_query}&seed=${seed + 10000}`} className="button no-print" style={{float:'right'}} title="Next">Next</a>
+          </nav>
           <h1>{title}</h1>
-          <p className="no-print">Print it out for your kids. NOW!</p>
+          <p className="no-print" style={{clear: 'both'}}>Print it out for your kids. NOW!</p>
           <div className="columns">
             <ComponentType min={min} max={max} seed={seed} count={count} />
           </div>
@@ -92,7 +98,7 @@ App.getInitialProps = ({res, query}) => {
     console.log(query);
     let d = new Date();
     res.writeHead(302, {
-      Location: '/?seed=' + d.getFullYear() + (d.getMonth() + 1) + d.getDate()
+      Location: '/?seed=' + (d.getFullYear() * 1000 + (d.getMonth() + 1) * 100 + d.getDate())
     })
     res.end()
   }
